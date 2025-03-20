@@ -1,0 +1,30 @@
+{
+    "name": "andy-shi88/laravel-eloquent-flags",
+    "description": "working with flags field on laravel eloquent",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "AndyShi88\\LaravelEloquentFlags\\": "src/",
+            "AndyShi88\\LaravelEloquentFlags\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "andy-shi88",
+            "email": "shi88.andy@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/database": "^11.43",
+        "illuminate/support": "^11.43"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.7",
+        "orchestra/testbench": "^9.11"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
