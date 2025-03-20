@@ -65,15 +65,22 @@ trait HasFlags
     }
 
     
-    public function whereSome(string $column, array $values = []): Builder
+    public function scopeWhereSome(Builder $query, array $data): Builder
     {
-        $value = Transformer::toInteger($this->getFlagableLabels()[$column], $values);
-        return static::query()->whereRaw(sprintf('%s & %d > 0', $column, $value));
+        $value = Transformer::toInteger($this->getFlagableLabels()[$data['column']], $data['values']);
+        return $query->whereRaw(sprintf('%s & %d = %d', $data['column'], $value, $value));
     }
 
-    public function whereExact(string $column, array $values = [])
+    public function scopeWhereIntersect(Builder $query, array $data): Builder
     {
-        $value = Transformer::toInteger($this->getFlagableLabels()[$column], $values);
-        return static::query()->where($column, $value);
+        $value = Transformer::toInteger($this->getFlagableLabels()[$data['column']], $data['values']);
+        return $query->whereRaw(sprintf('%s & %d > 0', $data['column'], $value));
+    }
+
+
+    public function scopeWhereAll(Builder $query, array $data)
+    {
+        $value = Transformer::toInteger($this->getFlagableLabels()[$data['column']], $data['values']);
+        return $query->where($data['column'], $value);
     }
 }

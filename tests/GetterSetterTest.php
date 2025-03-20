@@ -48,7 +48,6 @@ it('should be able to handle multiple flags', function() {
     $this->assertEquals(['1', '3'], $this->testModel->flag_b);
 });
 
-
 it('should be able to handle multiple flags | another being null', function() {
     $this->testModel->flag_a = null;
     $this->testModel->flag_b = ['1', '3'];
