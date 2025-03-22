@@ -10,6 +10,18 @@ composer require andy-shi88/laravel-eloquent-flags
 
 ### Usages
 
+- Create table with column type `integer`
+```php
+Schema::create('person', function (Blueprint $table) {
+    $table->id();
+    $table->string('name');
+    $table->integer('category')->nullable();
+    $table->integer('ownership')->default(0);
+    $table->timestamps();
+});
+```
+
+- Implement `Flagable` interface, use `HasFlags` trait, and set `$flagableColumns` to column that want to be used as integer flags.
 ```php
 use AndyShi88\LaravelEloquentFlags\HasFlags;
 use AndyShi88\LaravelEloquentFlags\Interfaces\Flagable;
@@ -42,6 +54,8 @@ class Person extends Model implements Flagable
 ```
 
 - ## Query Usages
+
+- Store data, this will save the `ownership` and `category` field as `integer` in the database, but readable as array of labels we specified.
 
 ```php
 $a = Person::factory()->create([
