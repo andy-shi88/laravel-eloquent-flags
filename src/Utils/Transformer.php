@@ -2,7 +2,6 @@
 
 namespace AndyShi88\LaravelEloquentFlags\Utils;
 
-
 class Transformer
 {
     public static function toInteger(array $flags, array|null $flagValues): int|null
@@ -15,6 +14,7 @@ class Transformer
             $index = array_search($flagValue, $flags);
             $result += pow(2, $index);
         }
+
         return $result;
     }
 
@@ -27,11 +27,12 @@ class Transformer
         $binString = decbin($value);
         $binArr = str_split($binString);
         $count = count($binArr);
-        for ($i=0; $i < $count; $i++) { 
+        for ($i = 0; $i < $count; $i++) {
             if ($binArr[$i] === '1') {
                 $result[] = $flags[$count - $i - 1];
             }
         }
+
         return array_reverse($result);
     }
 }

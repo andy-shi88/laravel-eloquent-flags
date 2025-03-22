@@ -2,7 +2,6 @@
 
 use AndyShi88\LaravelEloquentFlags\Tests\TestCase;
 
-
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -46,7 +45,5 @@ function something()
 {
     // ..
 }
-
-
 
 uses(TestCase::class)->in(__DIR__);

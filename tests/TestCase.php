@@ -4,7 +4,6 @@ namespace AndyShi88\LaravelEloquentFlags\Tests;
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use PHPUnit\Framework\TestCase as BaseTestCase;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
