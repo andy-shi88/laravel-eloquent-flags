@@ -1,6 +1,6 @@
 {
     "name": "andy-shi88/laravel-eloquent-flags",
-    "description": "working with flags field on laravel eloquent",
+    "description": "working with flags field on laravel eloquent integer field",
     "type": "library",
     "autoload": {
         "psr-4": {
@@ -17,6 +17,7 @@
         }
     ],
     "require": {
+        "php": ">=8.0",
         "illuminate/database": "^11.43",
         "illuminate/support": "^11.43"
     },
