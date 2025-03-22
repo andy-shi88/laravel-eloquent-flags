@@ -11,7 +11,9 @@
     "authors": [
         {
             "name": "andy-shi88",
-            "email": "shi88.andy@gmail.com"
+            "email": "shi88.andy@gmail.com",
+            "homepage": "https://github.com/andy-shi88/laravel-eloquent-flags"
+
         }
     ],
     "require": {
@@ -20,7 +22,8 @@
     },
     "require-dev": {
         "pestphp/pest": "^3.7",
-        "orchestra/testbench": "^9.11"
+        "orchestra/testbench": "^9.11",
+        "laravel/pint": "1.8.0"
     },
     "config": {
         "allow-plugins": {
