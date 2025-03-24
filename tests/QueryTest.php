@@ -34,6 +34,14 @@ it('should be able to get rows that has the provided flags | multiple rows retur
     $this->assertCount(2, $rows);
 });
 
+it('should be able to get rows that has the provided flags | multiple rows returned | order does not matter', function () {
+    $rows = TestModel::whereSome([
+        'column' => 'flag_a',
+        'values' => ['e', 'd'],
+    ])->get();
+    $this->assertCount(2, $rows);
+});
+
 it('should be able to get rows that has intersection with the provided flags | multiple rows returned', function () {
     $rows = TestModel::whereIntersect([
         'column' => 'flag_a',

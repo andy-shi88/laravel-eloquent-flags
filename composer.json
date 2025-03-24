@@ -3,6 +3,9 @@
     "description": "working with flags field on laravel eloquent integer field",
     "type": "library",
     "license": "MIT",
+    "scripts": {
+        "test": "./vendor/bin/pest"
+    },
     "autoload": {
         "psr-4": {
             "AndyShi88\\LaravelEloquentFlags\\": "src/",
