@@ -1,4 +1,4 @@
-# A trait to make Eloquent models handle flags in `number` column
+# A trait to make Eloquent models handle flags in `integer` column
 
 ![test](https://github.com/andy-shi88/laravel-eloquent-flags/actions/workflows/test.yml/badge.svg)
 
@@ -9,6 +9,13 @@ This package contains a trait HasFlags to make Eloquent models able to handle mu
 ```
 composer require andy-shi88/laravel-eloquent-flags
 ```
+
+
+### Limitation
+
+The number of flags per column this can handle depends on its datatype.
+- unsignedInteger(): 32 flags
+- unsignedBigInteger(): 64 flags
 
 ### Usages
 
