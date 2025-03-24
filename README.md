@@ -1,5 +1,7 @@
 # A trait to make Eloquent models handle flags in `number` column
 
+![test](https://github.com/andy-shi88/laravel-eloquent-flags/actions/workflows/test.yml/badge.svg)
+
 This package contains a trait HasFlags to make Eloquent models able to handle multiple flag values using just integer column type. The column type can be any unsigned number type.
 
 ### Install
