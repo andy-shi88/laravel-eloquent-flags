@@ -19,18 +19,31 @@ The number of flags per column this can handle depends on its datatype.
 
 ### Usages
 
-- Create table with column type `integer`
+- ### [Setup Models](#setup-models)
+
+- ### [Querying](#querying)
+
+### <div id="setup-models"></div>
+### Setup Models
+- With the schema like this.
 ```php
 Schema::create('person', function (Blueprint $table) {
     $table->id();
     $table->string('name');
-    $table->integer('category')->nullable();
-    $table->integer('ownership')->default(0);
+    $table->unsignedInteger('category')->nullable(); // can handle nullable field
+    $table->unsignedInteger('ownership')->default(0);
     $table->timestamps();
 });
 ```
 
 - Implement `Flagable` interface, use `HasFlags` trait, and set `$flagableColumns` to column that want to be used as integer flags.
+    - `$flagableColumn` is formatted as:
+        ```php
+        [
+            'column_1': [...$labels],
+            'column_2': [...$labels],
+        ]
+        ```
 ```php
 use AndyShi88\LaravelEloquentFlags\HasFlags;
 use AndyShi88\LaravelEloquentFlags\Interfaces\Flagable;
@@ -62,7 +75,9 @@ class Person extends Model implements Flagable
 }
 ```
 
-- ## Query Usages
+
+### <div id="querying"></div>
+### Query Usages
 
 - Store data, this will save the `ownership` and `category` field as `integer` in the database, but readable as array of labels we specified.
 
@@ -111,7 +126,14 @@ $resIntersect = Person::whereIntersect([
     'column' => 'ownership',
     'values' => ['car', 'house', 'phone']
 ])->get(); // return $a, $b, $c, $d
+
+// specifying number of minimal intersected value [mysql]
+$resIntersect = Person::whereIntersect([
+    'column' => 'ownership',
+    'values' => ['car', 'house', 'phone']
+], 2)->get(); // return $a, $b
 ```
+
 
 We'll also by default get the readable array of the fields:
 ```php
