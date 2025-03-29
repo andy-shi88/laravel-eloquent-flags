@@ -1,6 +1,9 @@
 <?php
 
 use AndyShi88\LaravelEloquentFlags\Tests\TestSupport\TestModel;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+uses(DatabaseTransactions::class);
 
 beforeEach(function () {
     $this->testModel = new TestModel();

@@ -4,6 +4,7 @@ namespace AndyShi88\LaravelEloquentFlags;
 
 use AndyShi88\LaravelEloquentFlags\Utils\Transformer;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 trait HasFlags
 {
@@ -63,9 +64,12 @@ trait HasFlags
         return $query->whereRaw(sprintf('%s & %d = %d', $data['column'], $value, $value));
     }
 
-    public function scopeWhereIntersect(Builder $query, array $data): Builder
+    public function scopeWhereIntersect(Builder $query, array $data, ?int $count = 1): Builder
     {
         $value = Transformer::toInteger($this->getFlagableLabels()[$data['column']], $data['values']);
+        if (in_array(DB::getDriverName(), ['mysql'])) {
+            return $query->whereRaw(sprintf('bit_count(%s & %d) >= %d', $data['column'], $value, $count));
+        }
 
         return $query->whereRaw(sprintf('%s & %d > 0', $data['column'], $value));
     }

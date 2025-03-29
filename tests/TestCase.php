@@ -16,14 +16,16 @@ abstract class TestCase extends Orchestra
 
     protected function setUpDatabase()
     {
-        Schema::create('test_models', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('name')->nullable();
-            $table->text('other_field')->nullable();
-            $table->unsignedInteger('flag_a')->nullable();
-            $table->unsignedBigInteger('flag_b')->nullable();
-            $table->text('field_with_mutator')->nullable();
-            $table->json('nested')->nullable();
-        });
+        if (! Schema::hasTable('test_models')) {
+            Schema::create('test_models', function (Blueprint $table) {
+                $table->increments('id');
+                $table->text('name')->nullable();
+                $table->text('other_field')->nullable();
+                $table->unsignedInteger('flag_a')->nullable();
+                $table->unsignedBigInteger('flag_b')->nullable();
+                $table->text('field_with_mutator')->nullable();
+                $table->json('nested')->nullable();
+            });
+        }
     }
 }
